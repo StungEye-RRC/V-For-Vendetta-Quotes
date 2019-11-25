@@ -1,3 +1,41 @@
 // Place all the styles related to the quotes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+$base-font-size: 16px;
+
+ body {
+   font-size: $base-font-size;
+
+   #wrapper {
+     width: 80%;
+     margin: 5em auto;
+
+      p {
+        font-family: 'EB Garamond', serif;
+        font-size: $base-font-size * 2;
+        line-height: 1.5em;
+      }
+
+      h1 {
+        font-family: 'Oswald', sans-serif;
+        font-size: $base-font-size * 3;
+        margin-bottom: 1em;
+      }
+
+   }
+ }
+
+ @media only screen and (max-width: 600px) {
+ #wrapper {
+   width: 90%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+ #wrapper {
+   width: 95%;
+  }
+}
+
+

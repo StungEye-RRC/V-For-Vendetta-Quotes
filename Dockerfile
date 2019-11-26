@@ -2,10 +2,10 @@ FROM ruby:2.6.5-buster
 
 ENV RAILS_ROOT /project
 
-# Add NodeJS to sources list 
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -  
+# Add NodeJS to sources list
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 
-# Add Yarn to the sources list 
+# Add Yarn to the sources list
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
   && echo 'deb http://dl.yarnpkg.com/debian/ stable main' > /etc/apt/sources.list.d/yarn.list
 
@@ -29,8 +29,7 @@ ENV SECRET_KEY_BASE='2502e3fba52ad66fcef930dcf59ad9210d3e1a1aceadd6077c7498d0551
 COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
 
-RUN bundle install --without development test
-#RUN bundle install --jobs 20 --retry 5 --without development test
+RUN bundle install --jobs 20 --retry 5 --without development test
 
 COPY package.json package.json
 COPY yarn.lock yarn.lock
@@ -38,7 +37,8 @@ COPY yarn.lock yarn.lock
 RUN yarn install --check-files
 
 COPY . .
-# RUN bundle exec rails assets:precompile
+
+RUN bundle exec rails assets:precompile
 
 # EXPOSE 3000
 
